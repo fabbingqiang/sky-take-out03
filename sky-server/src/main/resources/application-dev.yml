@@ -1,8 +1,15 @@
-# sky:
-#   datasource:
-#     driver-class-name: com.mysql.cj.jdbc.Driver
-#     host: localhost
-#     port: 3306
-#     database: sky_take_out
-#     username: root
-#     password: sql_1
+# 标准Spring Boot数据库配置，Druid可自动适配
+spring:
+  datasource:
+    # 完整的JDBC URL，拼接数据库地址、端口、库名
+    url: jdbc:mysql://localhost:3306/sky_take_out?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver  # 修正驱动类名拼写错误
+    username: root  # MySQL用户名
+    password: asdfghjkl123  # 必须填写真实密码，含特殊字符用引号包裹，例：'123@abc'
+    type: com.alibaba.druid.pool.DruidDataSource  # 指定Druid连接池
+    # Druid连接池优化参数（可选）
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
